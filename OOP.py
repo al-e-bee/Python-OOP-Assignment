@@ -89,3 +89,17 @@ print(f"Number of grades for {student1.name}: {len(student1.grades)}")
 print(f"Number of grades for {student2.name}: {len(student2.grades)}")
 print(f"Number of grades for {student3.name}: {len(student3.grades)}")
 
+# Using regular expressions to validate the email format for each student. The regex pattern checks the validity of the email format. If it is valid, it prints a message indicating that the email is valid; otherwise, it prints a message indicating that the email is invalid. 
+
+import re 
+email_pattern = r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
+
+def validate_email(email):
+    if re.match(email_pattern, email):
+        return f"Email {email} is valid."
+    else:
+        return f"Email {email} is not a valid email address."
+
+print(validate_email(student1.email))
+print(validate_email(student2.email))
+print(validate_email("does_notwork"))
