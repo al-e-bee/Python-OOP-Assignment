@@ -20,17 +20,20 @@ class Student:
 # Built a method called grades_tuple that returns the grades as a tuple. Attempted to modify the tuple by appending a new grade to demonstrate that they are immutable. Using a try-except block to catch the AttributeError that occurs when trying to modify a tuple.     
     def grades_tuple(self):
         grades_tuple = tuple(self.grades)
-        return tuple(self.grades)  
+        return f"{self.name}'s grades as a tuple: {grades_tuple}"
     try:
         grades_tuple.append(100)
     except AttributeError:
         print("Cannot modify a tuple. Tuples are immutable.")
     
-        
 # 3 Student Ojects created with the name, email, and grades attributes. The grades are stored in a list.
 student1 = Student("Jessica Day", "jessica.day@example.com",[92, 97, 88])
 student2 = Student("Nick Miller", "nick.miller@example.com", [77, 89, 94])
 student3 = Student("Winston Bishop", "winston.bishop@example.com", [88, 79, 95])
+
+print(student1.grades_tuple())
+print(student2.grades_tuple())
+print(student3.grades_tuple())
 
 # Added two new grades to each Student Object using the add_grade method
 student1.add_grade(99)
@@ -46,10 +49,6 @@ student3.add_grade(87)
 print(student1.display_info())
 print(student2.display_info())
 print(student3.display_info())
-
-print(student1.average_grade())
-print(student2.average_grade())
-print(student3.average_grade())
 
 # Created a dictionary called student_dict that maps each student's email to their corresponding Student object. 
 
@@ -103,3 +102,17 @@ def validate_email(email):
 print(validate_email(student1.email))
 print(validate_email(student2.email))
 print(validate_email("does_notwork"))
+
+# Using regex to count how many grades are above 90 for all students. The regex pattern checks for grades that are 90 or above, counts the total number of matches, and prints the count. 
+
+grade_pattern = r'\b([9][0-9]|100)\b'
+
+def count_grades_above_90(students):
+    count = 0
+    for student in students:
+        grades_str = ' '.join(map(str, student.grades))
+        count += len(re.findall(grade_pattern, grades_str))
+    return count
+
+print(f"The total count of grades above 90 for all students is: {count_grades_above_90([student1, student2, student3])}")
+
