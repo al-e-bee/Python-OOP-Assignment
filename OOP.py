@@ -105,6 +105,7 @@ def validate_email(email):
 
 print(validate_email(student1.email))
 print(validate_email(student2.email))
+print(validate_email(student3.email))
 print(validate_email("does_notwork"))
 
 
