@@ -36,10 +36,6 @@ student1 = Student("Jessica Day", "jessica.day@example.com",[92, 97, 88])
 student2 = Student("Nick Miller", "nick.miller@example.com", [77, 89, 94])
 student3 = Student("Winston Bishop", "winston.bishop@example.com", [88, 79, 95])
 
-print(student1.grades_tuple())
-print(student2.grades_tuple())
-print(student3.grades_tuple())
-
 
 # Added two new grades to each Student Object using the add_grade method
 student1.add_grade(99)
@@ -71,11 +67,17 @@ def get_student_by_email(email):
       
 print(get_student_by_email("jessica.day@example.com"))
 print(get_student_by_email("winston.bishop@example.com"))
+print(get_student_by_email("schmidt@example.com"))
 
 
 # Created a set of all the unique grades across all students
 unique_grades = set(student1.grades + student2.grades + student3.grades)
 print("All unique grades across all students:", unique_grades)
+
+# Calling the grades_tuple method for each student to demonstrate that the grades are returned as a tuple and cannot be modified.
+print(student1.grades_tuple())
+print(student2.grades_tuple())
+print(student3.grades_tuple())
 
 
 # Performed list operations to remove the last grade from each student's grades list using the .pop() method. Followed by accessing and printing the first and last grade for each student using indexing. Lastly, printed the number of grades weach student as using the len() function.
@@ -106,7 +108,7 @@ def validate_email(email):
 print(validate_email(student1.email))
 print(validate_email(student2.email))
 print(validate_email(student3.email))
-print(validate_email("does_notwork"))
+print(validate_email("does_notwork_at.example_dotcom"))
 
 
 # Using regex to count how many grades are above 90 for all students. The regex pattern checks for grades that are 90 or above, counts the total number of matches, and prints the count. 
